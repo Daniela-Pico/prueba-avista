@@ -1,4 +1,4 @@
-# Análisis Predictivo del Volumen Transaccional en Terminales Bancarias
+# Análisis Predictivo del Volumen Transaccional en Terminales.
 
 **Avista · Análisis de Datos · Abril 2026**
 
