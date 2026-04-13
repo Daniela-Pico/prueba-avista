@@ -7,7 +7,7 @@
 ## Descripción
 
 Pipeline MLOps completo para el análisis y predicción del volumen de transacciones
-en terminales bancarias. A partir de **775.466 transacciones** registradas entre
+en terminales. A partir de **775.466 transacciones** registradas entre
 enero y mayo de 2017, se construyó un modelo predictivo capaz de estimar la demanda
 diaria por operación en cada terminal para los próximos **15 días**.
 
