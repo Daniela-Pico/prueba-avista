@@ -60,7 +60,7 @@ prueba-avista/
 El informe completo con análisis exploratorio, modelos, predicciones e interpretaciones
 está disponible aquí:
 
-👉 **[Ver informe ejecutivo](informe_avista.html)**
+👉 **[Ver informe ejecutivo](https://daniela-pico.github.io/prueba-avista/informe_avista.html)**
 
 ---
 
