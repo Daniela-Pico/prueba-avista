@@ -1,0 +1,71 @@
+
+project:
+  name: "banco_transaccional_forecast"
+  version: "1.0.0"
+  random_seed: 42
+
+paths:
+  raw_data   : "data/data_01.txt"
+  output_dir : "outputs"
+
+data:
+  sep          : "\t"
+  date_col     : "fecha"
+  terminal_col : "idTerminal"
+  oper_col     : "oper"
+  date_format  : "%Y-%m-%d %H:%M:%S.%f"
+  top_n_terminals : 5
+  top_n_opers     : 5
+
+split:
+  cutoff_date   : "2017-05-16"
+  future_start  : "2017-06-01"
+  future_end    : "2017-06-15"
+
+models:
+  active: ["HoltWinters", "Prophet"]
+  holtwinters:
+    trend               : "add"
+    seasonal            : "add"
+    seasonal_periods    : 7
+    initialization_method : "estimated"
+    optimized           : true
+    zero_replacement    : 0.1      # reemplaza ceros para evitar errores numéricos
+
+  prophet:
+    yearly_seasonality      : false
+    weekly_seasonality      : true
+    daily_seasonality       : false
+    seasonality_mode        : "additive"
+    changepoint_prior_scale : 0.05
+    interval_width          : 0.90
+    algorithm               : "LBFGS"
+
+  sarima:
+    m          : 7       # estacionalidad semanal
+    seasonal   : true
+    D          : 1       # diferenciación estacional forzada
+    max_p      : 3
+    max_q      : 3
+    max_P      : 2
+    max_Q      : 2
+    stepwise   : true
+    ic         : "aic"
+    n_fits     : 10
+
+evaluation:
+  alpha        : 0.05    # nivel de significancia para IC (95%)
+  cv_min_factor: 3       # mínimo de ciclos semanales para rolling CV
+  max_cv_folds : 15      # máximo de folds en rolling CV (limita tiempo SARIMA)
+  metric_selector: "MAE" # métrica para seleccionar modelo ganador
+
+visualization:
+  dpi    : 150
+  style  : "default"
+  colors:
+    blue   : "#D61D6B"   
+    orange : "#6B21A8"   
+    green  : "#F472B6"   
+    red    : "#2D1B4E"   
+    gray   : "#9CA3AF" 
+    bg     : "#FAFAFA"  
