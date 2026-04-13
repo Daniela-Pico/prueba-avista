@@ -2,4 +2,3 @@ venv/
 outputs/
 __pycache__/
 *.pyc
-data/data_01.txt
